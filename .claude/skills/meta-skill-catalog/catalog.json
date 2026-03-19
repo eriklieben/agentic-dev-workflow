@@ -1,0 +1,384 @@
+{
+  "version": 1,
+  "updated": "2026-03-21",
+  "skills": [
+    {
+      "name": "dev-commit",
+      "category": "dev",
+      "description": "Conventional commit messages — Angular/Conventional Commits spec, type validation, examples",
+      "path": ".claude/skills/dev-commit/",
+      "invocation": "model-only",
+      "added": "2026-03-19",
+      "version": "1.0.0"
+    },
+    {
+      "name": "dev-blueprint",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-blueprint/",
+      "invocation": "user-only",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "dev-dependency-backend",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-dependency-backend/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.2.0"
+    },
+    {
+      "name": "dev-dotnet-build",
+      "category": "dev",
+      "description": "MSBuild diagnosis and optimization — binlog analysis, incremental build fixes, antipatterns, Directory.Build organization",
+      "path": ".claude/skills/dev-dotnet-build/",
+      "invocation": "model-only",
+      "added": "2026-03-19",
+      "version": "1.0.0"
+    },
+    {
+      "name": "dev-dotnet-efcore",
+      "category": "dev",
+      "description": "EF Core query optimization — N+1 detection, split queries, compiled queries, change tracking, migration strategies",
+      "path": ".claude/skills/dev-dotnet-efcore/",
+      "invocation": "model-only",
+      "added": "2026-03-19",
+      "version": "1.0.0"
+    },
+    {
+      "name": "dev-dotnet-migrate",
+      "category": "dev",
+      "description": ".NET version migration assistant — guides 8→9, 9→10, 10→11, nullable adoption, AOT compatibility",
+      "path": ".claude/skills/dev-dotnet-migrate/",
+      "invocation": "user-only",
+      "added": "2026-03-19",
+      "version": "1.0.0"
+    },
+    {
+      "name": "dev-dependency-frontend",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-dependency-frontend/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.1.0"
+    },
+    {
+      "name": "dev-dependency",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-dependency/",
+      "invocation": "user-only",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "dev-iterative-retrieval",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-iterative-retrieval/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "dev-search-first",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-search-first/",
+      "invocation": "user-only",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "dev-security-backend",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-security-backend/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.2.0"
+    },
+    {
+      "name": "dev-security-frontend",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-security-frontend/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.2.0"
+    },
+    {
+      "name": "dev-security",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-security/",
+      "invocation": "user-only",
+      "added": "2026-03-17",
+      "version": "1.1.0"
+    },
+    {
+      "name": "dev-tdd-backend",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-tdd-backend/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.1.0"
+    },
+    {
+      "name": "dev-tdd-frontend",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-tdd-frontend/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.1.0"
+    },
+    {
+      "name": "dev-tdd",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-tdd/",
+      "invocation": "user-only",
+      "added": "2026-03-17",
+      "version": "1.1.0"
+    },
+    {
+      "name": "dev-verification-backend",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-verification-backend/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.2.0"
+    },
+    {
+      "name": "dev-verification-frontend",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-verification-frontend/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.1.0"
+    },
+    {
+      "name": "dev-verify",
+      "category": "dev",
+      "description": ">",
+      "path": ".claude/skills/dev-verify/",
+      "invocation": "user-only",
+      "added": "2026-03-17",
+      "version": "1.1.0"
+    },
+    {
+      "name": "doc-adr",
+      "category": "doc",
+      "description": ">",
+      "path": ".claude/skills/doc-adr/",
+      "invocation": "both",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "doc-design",
+      "category": "doc",
+      "description": ">",
+      "path": ".claude/skills/doc-design/",
+      "invocation": "both",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "doc-init",
+      "category": "doc",
+      "description": ">",
+      "path": ".claude/skills/doc-init/",
+      "invocation": "user-only",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "doc-postmortem",
+      "category": "doc",
+      "description": ">",
+      "path": ".claude/skills/doc-postmortem/",
+      "invocation": "both",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "doc-prd",
+      "category": "doc",
+      "description": ">",
+      "path": ".claude/skills/doc-prd/",
+      "invocation": "both",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "doc-rfc",
+      "category": "doc",
+      "description": ">",
+      "path": ".claude/skills/doc-rfc/",
+      "invocation": "both",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "doc-runbook",
+      "category": "doc",
+      "description": ">",
+      "path": ".claude/skills/doc-runbook/",
+      "invocation": "both",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "doc-spike",
+      "category": "doc",
+      "description": ">",
+      "path": ".claude/skills/doc-spike/",
+      "invocation": "both",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "meta-adopt-skill",
+      "category": "meta",
+      "description": ">",
+      "path": ".claude/skills/meta-adopt-skill/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.1.0"
+    },
+    {
+      "name": "meta-bootstrap",
+      "category": "meta",
+      "description": ">",
+      "path": ".claude/skills/meta-bootstrap/",
+      "invocation": "user-only",
+      "added": "2026-03-17",
+      "version": "1.5.0"
+    },
+    {
+      "name": "meta-continuous-learning",
+      "category": "meta",
+      "description": ">",
+      "path": ".claude/skills/meta-continuous-learning/",
+      "invocation": "user-only",
+      "added": "2026-03-17",
+      "version": "2.1.0"
+    },
+    {
+      "name": "meta-contribute-back",
+      "category": "meta",
+      "description": ">",
+      "path": ".claude/skills/meta-contribute-back/",
+      "invocation": "user-only",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "meta-heartbeat",
+      "category": "meta",
+      "description": ">",
+      "path": ".claude/skills/meta-heartbeat/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "meta-merge-contributions",
+      "category": "meta",
+      "description": ">",
+      "path": ".claude/skills/meta-merge-contributions/",
+      "invocation": "user-only",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "meta-skill-catalog",
+      "category": "meta",
+      "description": ">",
+      "path": ".claude/skills/meta-skill-catalog/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.1.0"
+    },
+    {
+      "name": "meta-upgrade",
+      "category": "meta",
+      "description": ">",
+      "path": ".claude/skills/meta-upgrade/",
+      "invocation": "user-only",
+      "added": "2026-03-17",
+      "version": "2.0.0"
+    },
+    {
+      "name": "meta-wrap-up",
+      "category": "meta",
+      "description": ">",
+      "path": ".claude/skills/meta-wrap-up/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "tool-ux-study",
+      "category": "tool",
+      "description": "Run a think-aloud usability study with AI testers and UX research facilitation",
+      "path": ".claude/skills/tool-ux-study/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.1.0"
+    },
+    {
+      "name": "dev-perf",
+      "category": "dev",
+      "description": "Performance profiling via Aspire traces — trace analysis, bottleneck identification, performance recommendations",
+      "path": ".claude/skills/dev-perf/",
+      "invocation": "user-only",
+      "added": "2026-03-19",
+      "version": "1.1.0"
+    },
+    {
+      "name": "tool-agentsandbox-merge",
+      "category": "tool",
+      "description": "Merge agentsandbox session work back into target branch — review, merge, squash, or cherry-pick",
+      "path": ".claude/skills/tool-agentsandbox-merge/",
+      "invocation": "user-only",
+      "added": "2026-03-19",
+      "version": "1.0.0"
+    },
+    {
+      "name": "tool-vitepress",
+      "category": "tool",
+      "description": ">",
+      "path": ".claude/skills/tool-vitepress/",
+      "invocation": "both",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "tool-worktree",
+      "category": "tool",
+      "description": "Manage git bare + worktree repositories \u2014 clone, add branches, sync worktrees with main, clean up merged branches. Use this skill when the user mentions worktrees, branches, syncing branches, or when ",
+      "path": ".claude/skills/tool-worktree/",
+      "invocation": "model-only",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    },
+    {
+      "name": "viz-c4-diagram",
+      "category": "viz",
+      "description": ">",
+      "path": ".claude/skills/viz-c4-diagram/",
+      "invocation": "both",
+      "added": "2026-03-17",
+      "version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "docsRepo": "my-docs",
+  "workflowRepo": "agentic-workflow",
+  "project": {
+    "name": "my-project",
+    "type": "api"
+  },
+  "docs": {
+    "templates": "templates",
+    "output": {
+      "adr": "adr",
+      "rfc": "rfc",
+      "design": "design",
+      "prd": "prd",
+      "runbook": "runbooks",
+      "postmortem": "postmortems",
+      "spike": "spikes",
+      "architecture": "architecture"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+# Personal context (don't share)
+context/USER.md
+context/MEMORY.md
+context/memory/
+CLAUDE.local.md
+
+# Environment
+.env
+.env.local
+
+# Node
+node_modules/
+
+# VitePress build output
+docs/.vitepress/dist/
+docs/.vitepress/cache/

@@ -1,0 +1,21 @@
+{
+  "docsRepo": ".",
+  "workflowRepo": ".",
+  "project": {
+    "name": "agentic-dev-workflow",
+    "type": "docs"
+  },
+  "docs": {
+    "templates": "templates",
+    "output": {
+      "adr": "docs/adr",
+      "rfc": "docs/rfc",
+      "design": "docs/design",
+      "prd": "docs/prd",
+      "runbook": "docs/runbooks",
+      "postmortem": "docs/postmortems",
+      "spike": "docs/spikes",
+      "architecture": "docs/architecture"
+    }
+  }
+}

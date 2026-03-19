@@ -1,0 +1,88 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -File .claude/hooks/on-prompt-submit.ps1",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -File .claude/hooks/on-doc-file-warn.ps1",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -File .claude/hooks/on-suggest-compact.ps1",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -File .claude/hooks/on-quality-gate.ps1",
+            "timeout": 30,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -File .claude/hooks/on-pre-compact.ps1",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -File .claude/hooks/on-cost-track.ps1",
+            "timeout": 5,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -File .claude/hooks/on-session-end.ps1",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
