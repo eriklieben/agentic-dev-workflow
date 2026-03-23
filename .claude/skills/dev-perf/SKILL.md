@@ -1,7 +1,7 @@
 ---
-version: 1.1.0
+version: 2.0.0
 name: dev-perf
-description: Performance profiling via Aspire traces
+description: "ALWAYS use this skill when investigating API performance, endpoint latency, or trace analysis. This skill provides the exact Aspire CLI commands and span pattern knowledge needed to diagnose N+1 queries, excessive storage reads, duplicate aggregate rehydration, and missing projections. You MUST consult this skill whenever the user mentions: slow endpoints, high latency, too many spans, N+1 patterns, storage reads, trace analysis, span counts, projection vs factory performance, before/after performance comparison, profiling requests, or asks 'why is this slow'. Even if you think you can handle it directly, this skill contains project-specific trace patterns and CLI commands you don't know without it."
 user-invocable: true
 argument-hint: "[endpoint-or-url]"
 ---
@@ -20,25 +20,33 @@ Investigate and resolve performance issues using .NET Aspire distributed tracing
 ## Prerequisites
 
 - Aspire AppHost running (all resources healthy)
-- The Aspire MCP server connected (provides `mcp__aspire__*` tools)
+- Aspire CLI 13.2+ — use `~/.dotnet/tools/aspire` (13.1.1 at `~/.aspire/bin/` may shadow it on PATH)
 
 ## Instructions for Claude
 
 ### Phase 1: Verify Environment
 
-Check that the Aspire AppHost is running and the API is healthy.
+Check the Aspire CLI and running AppHost:
 
-```
-mcp__aspire__list_resources
-```
-
-Confirm the target resource (usually `api`) shows `Running` / `Healthy`. If not, check console logs:
-
-```
-mcp__aspire__list_console_logs  resourceName: "<resource>"
+```bash
+~/.dotnet/tools/aspire ps --format Json
 ```
 
-If the AppHost is not running, tell the user and stop.
+Optionally run `~/.dotnet/tools/aspire doctor` (note: `--format Json` is not supported for doctor — it renders a terminal UI).
+
+If no AppHost is running, tell the user and stop.
+
+List resources and confirm the target (usually `api`) is Running/Healthy:
+
+```bash
+~/.dotnet/tools/aspire describe --format Json
+```
+
+If unhealthy, check console logs:
+
+```bash
+~/.dotnet/tools/aspire logs <resource> --format Json -n 50
+```
 
 ### Phase 2: Generate Traces
 
@@ -63,16 +71,17 @@ grep -i traceparent /tmp/perf-headers.txt
 
 If no specific endpoint was given, list recent traces and pick the slowest:
 
-```
-mcp__aspire__list_traces  resourceName: "api"
+```bash
+~/.dotnet/tools/aspire otel traces api --format Json -n 10
 ```
 
 ### Phase 3: Analyze Trace
 
-Drill into the trace to see all spans:
+Drill into the trace — spans and logs separately:
 
-```
-mcp__aspire__list_trace_structured_logs  traceId: "<trace-id>"
+```bash
+~/.dotnet/tools/aspire otel spans api --trace-id <trace-id> --format Json
+~/.dotnet/tools/aspire otel logs api --trace-id <trace-id> --format Json
 ```
 
 Count and categorize the spans. See [trace-patterns.md](trace-patterns.md) for the pattern reference.
@@ -89,7 +98,7 @@ Count and categorize the spans. See [trace-patterns.md](trace-patterns.md) for t
 Map spans back to code. Common patterns to look for:
 
 | Span pattern | Diagnosis | Fix |
-|--------------|-----------|-----|
+|---|---|---|
 | 3 spans per aggregate (HEAD + GET doc + GET events) | Aggregate rehydration | Use projection if only reading |
 | Same aggregate loaded multiple times | Duplicate rehydration | Cache or restructure the call chain |
 | 30+ spans for a single request | N+1 — loading aggregates in a loop | Replace with projection or batch query |
@@ -129,12 +138,13 @@ Expected Improvement:
 
 After code changes:
 
-1. Restart the resource:
-   ```
-   mcp__aspire__execute_resource_command  resourceName: "api"  commandName: "resource-restart"
+1. Restart the resource and wait for healthy state:
+   ```bash
+   ~/.dotnet/tools/aspire resource api restart
+   ~/.dotnet/tools/aspire wait api --status healthy
    ```
 
-2. Wait for healthy state, then re-exercise the same endpoint (Phase 2)
+2. Re-exercise the same endpoint (Phase 2).
 
 3. Pull the new trace and compare:
    ```
@@ -148,7 +158,7 @@ After code changes:
 ## Flags
 
 | Flag | Behavior |
-|------|----------|
+|---|---|
 | (no flag) | Full profiling workflow — trace, analyze, recommend |
 | `--compare` | Re-run a previous trace comparison after a fix |
 
@@ -163,7 +173,7 @@ playwright-cli goto <frontend-url>/<target-page>
 playwright-cli close
 ```
 
-Adjust the URL and authentication steps to match the project's frontend setup. Then pull the trace from Aspire as in Phase 3.
+Then pull the trace from Aspire as in Phase 3.
 
 ## Tips
 

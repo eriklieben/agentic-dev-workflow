@@ -1,5 +1,18 @@
 # Changelog: meta-bootstrap
 
+## 1.7.0 — 2026-03-23
+
+- Added `playwright-cli/` skill to Step 5c — installed alongside Aspire skills when AppHost detected
+- Runs `playwright-cli install` to create `.playwright/cli.config.json` in target project
+- Updated summary checklist to include playwright-cli
+
+## 1.6.0 — 2026-03-23
+
+- **Breaking:** Removed Aspire MCP server configuration (Step 5c)
+- Replaced MCP setup with Aspire skill installation: copies `aspire/`, `dev-watch/`, `dev-perf/` skill dirs when AppHost detected
+- No session restart needed — CLI-based skills work immediately
+- Updated summary to reflect skill installation instead of MCP configuration
+
 ## 1.5.0 — 2026-03-19
 
 - Add opencode plugin copy to Step 5b (`.opencode/plugins/hooks.ts` + `package.json`)

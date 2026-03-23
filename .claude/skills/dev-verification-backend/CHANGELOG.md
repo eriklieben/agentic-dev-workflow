@@ -1,5 +1,13 @@
 # Changelog: dev-verification-backend
 
+## 1.3.0 — 2026-03-23
+
+- **Breaking:** Migrated Phase 4b from Aspire MCP tools to Aspire CLI 13.2+
+- Replaced `mcp__aspire__list_resources` with `aspire describe --format Json`
+- Replaced `mcp__aspire__list_console_logs` with `aspire logs api --format Json -n 50`
+- Replaced `mcp__aspire__list_structured_logs` with `aspire otel logs api --format Json --severity Error -n 20`
+- Prerequisite: Aspire CLI 13.2+ (no longer requires MCP server)
+
 ## 1.2.0 — 2026-03-19
 
 - Phase 1 now generates binlog (`/bl:build.binlog`) for diagnostic use

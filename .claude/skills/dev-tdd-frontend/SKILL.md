@@ -1,5 +1,5 @@
 ---
-version: 1.1.0
+version: 1.2.0
 name: dev-tdd-frontend
 description: >
   Test-driven development workflow for Angular/TypeScript using Vitest,
@@ -384,16 +384,16 @@ npx playwright test --ui
 
 After tests pass (GREEN phase), if the Aspire AppHost is running, check for runtime errors that Vitest and Playwright won't catch:
 
-```
-mcp__aspire__list_console_logs  resourceName: "site"
+```bash
+~/.dotnet/tools/aspire logs site --format Json -n 50
 ```
 
 Look for:
 - **Angular runtime errors** — `NullInjectorError` (missing provider), `NG0` errors (template/change detection issues)
 - **Chunk load failures** — lazy-loaded routes that fail to resolve after refactoring
 - **API contract mismatches** — check the API resource logs for 4xx/5xx errors triggered by frontend requests:
-  ```
-  mcp__aspire__list_structured_logs  resourceName: "api"
+  ```bash
+  ~/.dotnet/tools/aspire otel logs api --format Json --severity Error -n 20
   ```
 
 These catch issues where the app compiles and unit tests pass, but the running app has runtime failures — especially common after changing service signatures, route structures, or API contracts.

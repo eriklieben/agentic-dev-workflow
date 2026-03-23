@@ -1,5 +1,5 @@
 ---
-version: 1.1.0
+version: 1.2.0
 name: dev-verification-frontend
 description: >
   Post-change verification for Angular/TypeScript frontend code — build, TypeScript
@@ -97,22 +97,22 @@ ls dist/*/ngsw.json 2>/dev/null && echo "SW manifest present" || echo "SW manife
 If the frontend is served through an Aspire AppHost, verify runtime health:
 
 **Step 1 — Resource health:**
-```
-mcp__aspire__list_resources
+```bash
+~/.dotnet/tools/aspire describe --format Json
 ```
 Verify the frontend resource (proxy or container) shows `Running`. Check the API resource is also healthy — frontend failures are often caused by backend issues.
 
 **Step 2 — Console errors:**
-```
-mcp__aspire__list_console_logs  resourceName: "site"
+```bash
+~/.dotnet/tools/aspire logs site --format Json -n 50
 ```
 Scan for Angular runtime errors: `ERROR`, `ExpressionChangedAfterItHasBeenCheckedError`, `NullInjectorError`, `NG0`, chunk load failures, or CORS errors.
 
 **Step 3 — API errors from frontend requests:**
+```bash
+~/.dotnet/tools/aspire otel logs api --format Json --severity Error -n 20
 ```
-mcp__aspire__list_structured_logs  resourceName: "api"
-```
-Filter for `Error` severity. Check for 4xx/5xx responses triggered by frontend requests — these indicate API contract mismatches, missing endpoints, or authorization issues that the frontend is hitting at runtime.
+Filter for errors from frontend requests — these indicate API contract mismatches, missing endpoints, or authorization issues that the frontend is hitting at runtime.
 
 Report any errors found as verification failures.
 

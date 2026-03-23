@@ -1,5 +1,5 @@
 ---
-version: 1.2.0
+version: 1.3.0
 name: dev-security-backend
 description: >
   Security checklist for C#/.NET backend (ASP.NET Core, EF Core, Event Sourcing).
@@ -404,8 +404,8 @@ Mishandled errors, edge cases, and unexpected states can expose data or cause ca
 If the Aspire AppHost is running, the `--scan` and `--full` flags include runtime security checks:
 
 **Step 1 — Check for leaked error details:**
-```
-mcp__aspire__list_structured_logs  resourceName: "api"
+```bash
+~/.dotnet/tools/aspire otel logs api --format Json --severity Error -n 20
 ```
 Scan for responses that leak stack traces, internal paths, or sensitive data in error messages. Production APIs should return Problem Details (RFC 7807) without internal details.
 
@@ -413,8 +413,8 @@ Scan for responses that leak stack traces, internal paths, or sensitive data in 
 Filter structured logs for `401`/`403` responses. A high volume may indicate misconfigured auth, missing policies, or endpoints that should require auth but don't.
 
 **Step 3 — Check console for security warnings:**
-```
-mcp__aspire__list_console_logs  resourceName: "api"
+```bash
+~/.dotnet/tools/aspire logs api --format Json -n 50
 ```
 Look for:
 - CORS policy warnings
