@@ -1,5 +1,5 @@
 ---
-version: 1.1.0
+version: 1.2.0
 name: dev-tdd-backend
 description: >
   Test-driven development workflow for C#/.NET using xUnit, NSubstitute,
@@ -419,14 +419,15 @@ dotnet test --filter "Category=Unit"
 
 After tests pass (GREEN phase), if the Aspire AppHost is running, verify there are no runtime errors that unit tests miss:
 
-```
-mcp__aspire__execute_resource_command  resourceName: "api"  commandName: "resource-restart"
+```bash
+~/.dotnet/tools/aspire resource api restart
+~/.dotnet/tools/aspire wait api --status healthy
 ```
 
 Wait for healthy state, then check for errors:
 
-```
-mcp__aspire__list_console_logs  resourceName: "api"
+```bash
+~/.dotnet/tools/aspire logs api --format Json -n 50
 ```
 
 Look for:

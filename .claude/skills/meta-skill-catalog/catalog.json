@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-03-21",
+  "updated": "2026-03-23",
   "skills": [
     {
       "name": "dev-commit",
@@ -99,7 +99,7 @@
       "path": ".claude/skills/dev-security-backend/",
       "invocation": "model-only",
       "added": "2026-03-17",
-      "version": "1.2.0"
+      "version": "1.3.0"
     },
     {
       "name": "dev-security-frontend",
@@ -108,7 +108,7 @@
       "path": ".claude/skills/dev-security-frontend/",
       "invocation": "model-only",
       "added": "2026-03-17",
-      "version": "1.2.0"
+      "version": "1.3.0"
     },
     {
       "name": "dev-security",
@@ -126,7 +126,7 @@
       "path": ".claude/skills/dev-tdd-backend/",
       "invocation": "model-only",
       "added": "2026-03-17",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "name": "dev-tdd-frontend",
@@ -135,7 +135,7 @@
       "path": ".claude/skills/dev-tdd-frontend/",
       "invocation": "model-only",
       "added": "2026-03-17",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "name": "dev-tdd",
@@ -153,7 +153,7 @@
       "path": ".claude/skills/dev-verification-backend/",
       "invocation": "model-only",
       "added": "2026-03-17",
-      "version": "1.2.0"
+      "version": "1.3.0"
     },
     {
       "name": "dev-verification-frontend",
@@ -162,7 +162,7 @@
       "path": ".claude/skills/dev-verification-frontend/",
       "invocation": "model-only",
       "added": "2026-03-17",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "name": "dev-verify",
@@ -261,7 +261,7 @@
       "path": ".claude/skills/meta-bootstrap/",
       "invocation": "user-only",
       "added": "2026-03-17",
-      "version": "1.5.0"
+      "version": "1.7.0"
     },
     {
       "name": "meta-continuous-learning",
@@ -342,7 +342,34 @@
       "path": ".claude/skills/dev-perf/",
       "invocation": "user-only",
       "added": "2026-03-19",
-      "version": "1.1.0"
+      "version": "2.0.0"
+    },
+    {
+      "name": "aspire",
+      "category": "dev",
+      "description": "Aspire CLI command reference — start, stop, describe, logs, traces, resource management, docs search",
+      "path": ".claude/skills/aspire/",
+      "invocation": "model-only",
+      "added": "2026-03-23",
+      "version": "1.0.0"
+    },
+    {
+      "name": "dev-watch",
+      "category": "dev",
+      "description": "Unified start/watch/test workflow — starts AppHost, discovers resources, monitors health and telemetry",
+      "path": ".claude/skills/dev-watch/",
+      "invocation": "user-only",
+      "added": "2026-03-23",
+      "version": "2.1.0"
+    },
+    {
+      "name": "playwright-cli",
+      "category": "tool",
+      "description": "Browser automation for web testing — open, navigate, click, fill, screenshot, console, network",
+      "path": ".claude/skills/playwright-cli/",
+      "invocation": "model-only",
+      "added": "2026-03-23",
+      "version": "1.0.0"
     },
     {
       "name": "tool-agentsandbox-merge",

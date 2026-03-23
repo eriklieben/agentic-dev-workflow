@@ -1,5 +1,5 @@
 ---
-version: 1.2.0
+version: 1.3.0
 name: dev-verification-backend
 description: >
   Post-change verification for C#/.NET backend code — build, Roslyn analyzers,
@@ -86,22 +86,22 @@ Coverage: X%
 If the project uses .NET Aspire and the AppHost is running, verify runtime health after tests pass:
 
 **Step 1 — Resource health:**
-```
-mcp__aspire__list_resources
+```bash
+~/.dotnet/tools/aspire describe --format Json
 ```
 Verify all resources report `Running` / `Healthy`. Flag any `Failed` or `Degraded` resources.
 
 **Step 2 — Console errors:**
-```
-mcp__aspire__list_console_logs  resourceName: "api"
+```bash
+~/.dotnet/tools/aspire logs api --format Json -n 50
 ```
 Scan for `Error`, `Exception`, `FATAL`, or stack traces in the console output. These indicate runtime failures that unit tests don't catch — DI registration errors, startup crashes, middleware failures, or unhandled exceptions.
 
 **Step 3 — Structured log errors:**
+```bash
+~/.dotnet/tools/aspire otel logs api --format Json --severity Error -n 20
 ```
-mcp__aspire__list_structured_logs  resourceName: "api"
-```
-Filter for `Error` and `Warning` severity entries. Check for:
+Check for:
 - Failed dependency injection resolutions
 - Configuration binding errors
 - Event store connection failures

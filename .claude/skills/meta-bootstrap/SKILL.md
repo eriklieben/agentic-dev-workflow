@@ -1,5 +1,5 @@
 ---
-version: 1.5.0
+version: 1.7.0
 name: meta-bootstrap
 description: >
   Install the agentic workflow into a project. Sets up context files, adopts skills,
@@ -201,7 +201,7 @@ Copy hook scripts from the workflow repo to the target project:
    - Copy `.opencode/package.json` from the workflow repo
    - This lets opencode call the same `.ps1` hooks via its plugin system
 
-## Step 5c: Configure Aspire MCP Server (if applicable)
+## Step 5c: Install Aspire Skills (if applicable)
 
 For .NET projects, check if an Aspire AppHost is present:
 
@@ -210,28 +210,17 @@ For .NET projects, check if an Aspire AppHost is present:
 grep -rl "Aspire.Hosting.AppHost\|AddProject\|IDistributedApplicationBuilder" --include="*.csproj" . 2>/dev/null
 ```
 
-If found, add the Aspire MCP server to the project's `.claude/settings.json`:
+If found, install the Aspire and browser testing skills:
 
-```json
-{
-  "mcpServers": {
-    "aspire": {
-      "command": "dotnet",
-      "args": ["run", "--project", "<path-to-apphost-csproj>", "--", "--mcp"]
-    }
-  }
-}
-```
+1. Copy `aspire/` skill directory to target project's `.claude/skills/`
+2. Copy `dev-watch/` skill directory to target project's `.claude/skills/`
+3. Copy `dev-perf/` skill directory to target project's `.claude/skills/`
+4. Copy `playwright-cli/` skill directory to target project's `.claude/skills/`
+5. Run `playwright-cli install` in the target project to create `.playwright/cli.config.json` (browser config)
 
-Steps:
-1. Find the AppHost `.csproj` path (usually `*.AppHost/*.AppHost.csproj` or `src/AppHost/*.csproj`)
-2. Read existing `.claude/settings.json` in the target project
-3. Merge the `mcpServers.aspire` entry without overwriting existing MCP servers
-4. If the AppHost project is not found, skip this step and note it in the summary
+These skills use the Aspire CLI (13.2+) and Playwright CLI directly — no MCP server configuration needed. The CLI commands work immediately without session restarts.
 
-This enables the `mcp__aspire__*` tools used by `/dev-verify`, `/dev-tdd`, `/dev-perf`, and `/dev-security` for runtime health checks and distributed tracing.
-
-**Important:** MCP server changes require restarting the AI agent session to take effect. Warn the user: "The Aspire MCP server has been configured. Please restart your session (exit and start a new one) for the Aspire tools to become available."
+If the AppHost project is not found, skip this step and note it in the summary.
 
 ## Step 6: Initialize Catalog
 
@@ -337,7 +326,7 @@ Show the user what was done:
 - [x] {N} templates copied to docs repo
 - [x] {N} skills installed
 - [x] Catalog initialized with {N} skills
-- [x] Aspire MCP server configured (if AppHost detected)
+- [x] Aspire + Playwright skills installed (if AppHost detected): aspire, dev-watch, dev-perf, playwright-cli
 - [x] Heartbeat added to CLAUDE.md
 - [x] AGENTS.md symlink created (opencode compatibility)
 - [x] .gitignore updated

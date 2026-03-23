@@ -1,5 +1,5 @@
 ---
-version: 1.2.0
+version: 1.3.0
 name: dev-security-frontend
 description: >
   Security checklist for Angular/TypeScript frontend. Covers XSS prevention,
@@ -351,8 +351,8 @@ Unhandled errors in the frontend can freeze the UI, leak state, or expose debug 
 If the Aspire AppHost is running, the `--scan` and `--full` flags include runtime security checks:
 
 **Step 1 — Check for runtime console errors:**
-```
-mcp__aspire__list_console_logs  resourceName: "site"
+```bash
+~/.dotnet/tools/aspire logs site --format Json -n 50
 ```
 Look for:
 - `console.error` or `console.warn` output that leaks internal state
@@ -360,8 +360,8 @@ Look for:
 - Failed network requests visible in console (CORS, auth, 500s)
 
 **Step 2 — Check API logs for frontend-triggered security issues:**
-```
-mcp__aspire__list_structured_logs  resourceName: "api"
+```bash
+~/.dotnet/tools/aspire otel logs api --format Json --severity Error -n 20
 ```
 Filter for errors from frontend requests:
 - `401`/`403` responses that indicate auth misconfiguration
